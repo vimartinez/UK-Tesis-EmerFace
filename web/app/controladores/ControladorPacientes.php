@@ -14,7 +14,9 @@ final class ControladorPacientes extends Controlador {
         else {
             $V->setData($res);
         }
-        $V->setinfoUsu($_SESSION['datosUsu']);
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
         if ($err) $V->setError($err);
         if ($msg) $V->setMensaje($msg);
         $V->mostrarHTML();
@@ -23,7 +25,9 @@ final class ControladorPacientes extends Controlador {
         $template = file_get_contents('web/principal.html');
         $scripts = '<script src="web/js/pacientes.js"></script>';
         $V = new PacientesAdd($template, $scripts);
-        $V->setinfoUsu($_SESSION['datosUsu']);
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
         if ($err) $V->setError($err);
         if ($msg) $V->setMensaje($msg);
         $V->mostrarHTML();
@@ -40,7 +44,9 @@ final class ControladorPacientes extends Controlador {
         else {
             $V->setData($res);
         }
-        $V->setinfoUsu($_SESSION['datosUsu']);
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
         if ($err) $V->setError($err);
         if ($msg) $V->setMensaje($msg);
         $V->mostrarHTML();
@@ -76,7 +82,9 @@ final class ControladorPacientes extends Controlador {
         else {
             $V->setData3($res3);
         }
-        $V->setinfoUsu($_SESSION['datosUsu']);
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
         if ($err) $V->setError($err);
         if ($msg) $V->setMensaje($msg);
         $V->mostrarHTML();
@@ -113,7 +121,9 @@ final class ControladorPacientes extends Controlador {
         else {
             $V->setData2($res2);
         }
-        $V->setinfoUsu($_SESSION['datosUsu']);
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
         if ($err) $V->setError($err);
         if ($msg) $V->setMensaje($msg);
         $V->mostrarHTML();
@@ -121,53 +131,13 @@ final class ControladorPacientes extends Controlador {
     
     public function addPatologiaPacienteDo() {
         $M = new ModeloPacientes("");
-        var_dump($_POST);
-        $res = $M->addPatologiaPacienteDo($_POST["frmNombre"],$_POST["frmDNI"],$_POST["frmMail"],$_POST["frmDireccion"],$_POST["frmBarrio"],$_POST["frmPiso"],$_POST["frmDepto"],$_POST["frmProvincia"],$_POST["frmLocalidad"]);
+        $res = $M->addPatologiaPaciente($_POST["id"],$_POST["frmPat"]);
         if ($res == "ok"){
-            $this->addPaciente("Se agregó el paciente correctamente",null);
+            $this->addPatologiaPaciente("Se agregó la patología correctamente",null);
         }
         else{
-            $this->addPaciente(null,"No se pudo insertar el paciente");
+            $this->addPatologiaPaciente(null,"No se pudo insertar la patología");
         }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public function delAutor() {
-        $aut = new AutoresClass($_POST["id"],null,null);
-        $M = new ModeloAutores("");
-        $res = $M->delAutor($aut);
-        if ($res == "ok"){
-            $this->gestionAutores("Se eliminó el autor",null);
-        }
-        else{
-            if ($res == "libro"){
-                $this->gestionAutores("No se puede eliminar un autor si tiene libros en el sistema",null);
-            }
-            else {
-                $this->gestionAutores(null,"No se pudo eliminar el autor");
-            }      
-        }    
-    }
-    public function autorAutocomplete(){
-        $search = $_POST["term"];
-        $res ="";
-        $M = new ModeloAutores("");
-        $res = $M->autorAutocomplete($search);
-        echo json_encode($res);
     }
 }
 

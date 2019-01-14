@@ -87,9 +87,15 @@ $().ready(function () {
         $("#frmMenu #metodo").val("addPersonContacto");
         $("#frmMenu").submit();
     });
-     $("#frmGuardarPatologia").click(function () {
+     $("#frmGuardarPatologia2").click(function () {
         $("#frmMenu #controlador").val("controladorPacientes");
         $("#frmMenu #metodo").val("addPatologiaPacienteDo");
         $("#frmMenu").submit();
     });
+    $("#frmVolverUsuarioDet").click(function () {
+        $("#frmMenu #controlador").val("controladorPacientes");
+        $("#frmMenu #metodo").val("gestionPacientes");
+        $("#frmMenu").submit();
+    });
+    
 });

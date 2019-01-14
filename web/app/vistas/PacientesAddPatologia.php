@@ -38,14 +38,15 @@ public function mostrarHTML() {
                     <option value="0">Seleccione</option>
                     {patologias}
                     </select>&nbsp;
-                    <input type="submit" value="Guardar" id="frmGuardarPatologia">
+                    <input type="submit" value="Guardar" id="frmGuardarPatologia2">
                 </li>
                 <li>
                     
                     <input type="button" value="Volver" id="frmVolverUsuarioDet">
                 </li>
-                <input type="hidden" id="metodo" name="metodo" value="" >
-                <input type="hidden" id="controlador" name="controlador" value="" >
+                <input type="hidden" id="id" name="id" value="'.$resultados[0].'" >
+                <input type="hidden" id="metodo" name="metodo" value="addPatologiaPacienteDo" >
+                <input type="hidden" id="controlador" name="controlador" value="ControladorPacientes" >
             </ul>
            </form>
         </p>

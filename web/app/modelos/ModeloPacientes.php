@@ -122,7 +122,25 @@ final class ModeloPacientes extends Modelo {
        
        return $res;
     }
-  
+    
+    public function addPatologiaPaciente($pacienteID,$patologiaID){
+        //$res = array();
+        $conn = $this->conectarBD();
+        
+           
+        $sql = "INSERT INTO pacientes_patologias(pat_id, pac_id) VALUES ($patologiaID,$pacienteID)";
+        //var_dump($sql); die();
+        if ($resultado = $conn->query($sql)) {
+            $res = "ok";
+            $this->desconectarBD($conn);
+        }
+        else {  
+                $res[0] = "err";
+                $this->desconectarBD($conn);
+            }
+       
+       return $res;
+    }
 }
 
 ?>
