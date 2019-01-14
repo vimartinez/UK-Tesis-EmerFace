@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="InvalidId"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="170dp" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/groupButton"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnDetectFace"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Buscar Cara"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnIdentify"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Identificar"
+        tools:layout_editor_absoluteX="236dp"
+        tools:layout_editor_absoluteY="447dp" />
+
+        />
+
+</android.support.constraint.ConstraintLayout>

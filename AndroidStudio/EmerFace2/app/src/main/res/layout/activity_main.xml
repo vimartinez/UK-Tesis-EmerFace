@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/logo"
+            android:scaleType="centerInside"
+
+            />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:text="@string/txtPacientes"
+            android:gravity="center"
+            android:id="@+id/textView"
+            android:textSize="14dp"/>
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView"
+            android:scaleType="fitCenter"
+            android:background="#000000"
+            android:padding="1dp"
+            />
+        <Button
+            android:text="Identificar Paciente"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:paddingLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/button"
+            android:drawableLeft="@drawable/account"
+            android:background="@color/fondoBoton"
+            android:layout_margin="5dp"
+        />
+
+        <Button
+            android:text="Ver información del Paciente"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:paddingLeft="20dp"
+            android:id="@+id/buscarPaciente"
+            android:drawableLeft="@drawable/magnify"
+            android:background="@color/fondoBoton"
+            android:layout_margin="5dp"
+            android:onClick="cambiarPantalla"/>
+
+        <Button
+            android:text="Herramientas"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:id="@+id/herramientas"
+            android:drawableLeft="@drawable/wrench"
+            android:drawablePadding="8dp"
+            android:paddingLeft="20dp"
+            android:background="@color/fondoBoton"
+            android:layout_margin="5dp"
+            android:onClick="probarSrv"
+
+            />
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
