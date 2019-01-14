@@ -1,0 +1,29 @@
+.msgError{
+	text-align:center;
+	color: red;
+}
+.tabla-1 {
+    margin: 0px auto;
+    padding: 0px;
+    border-spacing: 0;
+    font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.tabla-1 th{
+    border-bottom: 2px solid grey;
+    font: 15px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    height: 30px;
+    text-align: left;
+}
+.tabla-1 td {
+    padding: 3px;
+    height: 25px;
+}
+.tabla-1 tr:hover {
+	color: #4B99AD;
+}
+.tabla-etiquetas {
+    text-align: center;
+    width:40%; 
+    border:1px solid black;
+    font: "verdana"
+}

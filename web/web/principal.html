@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>UK - TFI: EmerFACE</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="web/img/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" href="web/css/style.css">
+        <link rel="stylesheet" type="text/css" href="web/css/biblio.css">
+        <link rel="stylesheet" type="text/css" href="web/css/form.css">
+        <link rel="stylesheet" type="text/css" href="web/css/jquery-ui.css">
+        <script type="text/javascript" src="web/js/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="web/js/jquery-ui.js"></script>
+        <script type="text/javascript" src="web/js/funciones.js"></script>
+        <!-- Scripts -->
+    </head>
+    
+    <body>   
+        <div id="outer">
+            <div id="wrapper">
+                <div id="menu">
+                    <ul>
+                        <li class="first"><a href="index.php">Inicio</a></li>
+                        <li><a href="#" id="mnuServicios">Usuarios</a></li>
+                        <li><a href="#" id="mnuCatalogo">Pacientes</a></li>
+                        <li><a href="#" id="mnuLinks">Patologías</a></li>
+                        <li><a href="#" id="mnuLogin">Médicos</a></li>
+                        <li><a href="#" id="mnuSocios">Ayuda</a></li>
+                        <li><a href="#" id="mnuSalir">Salir</a></li>
+                        <li class="last"><a href="#" id="mnuAcercaDe">Acerca de..</a></li>
+                    </ul>
+                    <br class="clearfix" />
+                </div>
+                <div id="header">
+                    <div id="logo">
+                        <h1><a href="#">EmerFace</a></h1>
+                    </div>
+                    <div id="search">
+                        {infoUsuario}
+                    </div>
+                </div>
+                <div id="page">
+                    {areaTrabajo}
+                </div> 
+
+                <br class="clearfix" />
+                <div id="footer">
+                    &copy; Untitled | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a> | Images by <a href="http://fotogrph.com/">Fotogrph</a>
+                </div>
+            </div>
+        </div>
+        <form id="frmMenu" method="post" action="index.php" name="frmMenu" >
+            <input type="hidden" id="controlador" name="controlador" value="" >
+            <input type="hidden" id="metodo" name="metodo" value="" >
+            <input type="hidden" id="ID" name="id" value="" >
+        </form>
+        <div id="dialog" title="Basic dialog">
+            <p id="textoDialogo"> </p>
+        </div>
+    </body>
+</html>
