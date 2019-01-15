@@ -1,53 +1,58 @@
 <?php
-final class PacientesAdd extends Vista {
+final class PacientesAddTratamiento extends Vista {
     
 protected $mensaje="";
+protected $data2 = null;
 
 public function mostrarHTML() {
 
+    $patolog = "";
     $mensaje =  ($this->getMensaje() != "" ? $this->mostrarMensaje($this->getMensaje()) : "");
     $error = ($this->getError() != "" ? $this->mostrarError($this->getError()) : "");
+    $resultados =  $this->getData();
+    $resultados2 =  $this->getData2();
+    foreach ($resultados as $clave ) {
+            $patolog = $patolog . "<option value=".$clave[10].">".$clave[11]."</option>";
+        }
     $diccionario = array(
         'areaTrabajo' => '
             <div class="box">
         <h2>Administración de Pacientes:</h2>             
         <p>
-            Nuevo Paciente: <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar nuevo tratamiento para una patología del Paciente: <br />
         </p>
+        
          <p id="frmAltaAutores">
           <form id="frmAutores" method="post" action="index.php" name="frmMenu" >
           <ul class="form-style-1">
             {mensaje}{error}
                 <li>
-                    <label>Datos Personales <span class="required">*</span></label>
-                    <input type="text" id="frmNombre" name="frmNombre" class="field-long" placeholder="Nombre" required />
-                </li>
-                 <li>
-                   <input type="number" id="frmDNI" name="frmDNI" class="field-divided" placeholder="DNI" min="1000000" max="99000000" required/>&nbsp;
-                   <input type="email" id="frmMail" name="frmMail" class="field-divided" placeholder="Mail" required/>
-                </li>        
-                <li>
-                   <label>Dirección <span class="required">*</span></label>
-                   <input type="text" id="frmDireccion" name="frmDireccion" class="field-divided" placeholder="Calle y número" required/>&nbsp;
-                   <input type="text" id="frmBarrio" name="frmBarrio" class="field-divided" placeholder="Barrio"/>
-                   </li>
-                <li>
-                   <input type="text" id="frmDireccion" name="frmDireccion" class="field-divided" placeholder="Piso" required/>&nbsp;
-                   <input type="text" id="frmBarrio" name="frmBarrio" class="field-divided" placeholder="Departamento"/>
-                   </li>
-                <li>
-                    <select name="frmProvincia" id="frmProvincia" class="field-divided">
-                    <option value="0">Provincia</option>
-                    {provincias}
-                    </select>&nbsp;
-                    <input type="text" id="frmLocalidad" name="frmLocalidad" class="field-divided" placeholder="Localidad" required/>
+                    <p><b>'.$resultados[0][1].'</b> DNI: '.$resultados[0][7].' 
+                    Dirección: '.$resultados[0][2].' '.$resultados[0][3].' '.$resultados[0][4].'
+                    </p>
                 </li>
                 <li>
-                    <input type="submit" value="Guardar" id="frmGuardarUsuario2">
-                    <input type="button" value="Volver" id="frmVolverUsuario">
+                    <label>Seleccione Patología <span class="required">*</span></label>
+                <li>
+                    <select name="frmPat" id="frmPat" class="field-long">
+                    <option value="0">Seleccione</option>
+                    {patologias}
+                    </select>&nbsp;      
                 </li>
-                <input type="hidden" id="metodo" name="metodo" value="" >
-                <input type="hidden" id="controlador" name="controlador" value="" >
+                <li>
+                <label>Ingrese tratamiento<span class="required">*</span></label>
+                    <input type="text" id="tratamDescr" name="tratamDescr" class="field-long" placeholder="Nombre" required/>
+                </li>
+                <li>
+                    <textarea name="tratam" id="tratam" placeholder="Descripción" class="field-long" required></textarea>  
+                </li>
+                <li>
+                    <input type="submit" value="Guardar" id="frmGuardarTratam">
+                    <input type="button" value="Volver" id="frmVolverUsuarioDet">
+                </li>
+                <input type="hidden" id="id" name="id" value="'.$resultados[0][0].'" >
+                <input type="hidden" id="metodo" name="metodo" value="addTratamientoDo" >
+                <input type="hidden" id="controlador" name="controlador" value="ControladorPacientes" >
             </ul>
            </form>
         </p>
@@ -56,7 +61,8 @@ public function mostrarHTML() {
         'mensajeError' => $this->getMensaje(),
         'infoUsuario' => $this->getinfoUsu(),
         'mensaje'       => $mensaje, 
-        'error'         => $error
+        'error'         => $error,
+        'patologias'    => $patolog
 
         );
         foreach ($diccionario as $clave=>$valor){
@@ -70,6 +76,14 @@ public function mostrarHTML() {
 
     public function setMensaje($mensaje) {
         $this->mensaje = $mensaje;
+    }
+    
+    public function getData2() {
+        return $this->data2;
+    }
+
+    public function setData2($data2) {
+        $this->data2 = $data2;
     }
 
 }

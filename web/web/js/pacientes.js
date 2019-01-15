@@ -80,11 +80,13 @@ $().ready(function () {
     $("#frmNuevoTrat").click(function () {
         $("#frmMenu #controlador").val("controladorPacientes");
         $("#frmMenu #metodo").val("addTratamiento");
+        $("#frmMenu #ID").val($("#pacId").val());
         $("#frmMenu").submit();
     });
     $("#frmNuevaPersCont").click(function () {
         $("#frmMenu #controlador").val("controladorPacientes");
         $("#frmMenu #metodo").val("addPersonContacto");
+        $("#frmMenu #ID").val($("#pacId").val());
         $("#frmMenu").submit();
     });
      $("#frmGuardarPatologia2").click(function () {
@@ -97,5 +99,17 @@ $().ready(function () {
         $("#frmMenu #metodo").val("gestionPacientes");
         $("#frmMenu").submit();
     });
+    $("#frmGuardarTratam").click(function () {
+      //  $("#frmMenu #controlador").val("controladorPacientes");
+       // $("#frmMenu #metodo").val("addTratamientoDo");
+       $("#frmMenu #ID").val($("#pacId").val());
+        $("#frmMenu").submit();
+    });
     
+    $("#frmGuardarPesContact").click(function () {
+      //  $("#frmMenu #controlador").val("controladorPacientes");
+       // $("#frmMenu #metodo").val("addTratamientoDo");
+       $("#frmMenu #ID").val($("#pacId").val());
+       $("#frmMenu").submit();
+    });
 });

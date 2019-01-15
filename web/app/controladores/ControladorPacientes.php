@@ -139,6 +139,69 @@ final class ControladorPacientes extends Controlador {
             $this->addPatologiaPaciente(null,"No se pudo insertar la patología");
         }
     }
+    
+    public function addTratamiento($msg = null, $err = null) {
+        $pac_Id = $_POST["id"];
+        $M = new ModeloPacientes("");
+        $res = $M->getPacienteDet($pac_Id);
+        $template = file_get_contents('web/principal.html');
+        $scripts = '<script src="web/js/pacientes.js"></script>';
+        $V = new PacientesAddTratamiento($template, $scripts);
+        if ($res[0] == "err"){
+            $V->setError("No se pudieron recuperar los detalles del Paciente");
+        }
+        else {
+            $V->setData($res);
+        }
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
+        if ($err) $V->setError($err);
+        if ($msg) $V->setMensaje($msg);
+        $V->mostrarHTML();
+    }
+    
+    public function addTratamientoDo() {
+        $M = new ModeloPacientes("");
+        $res = $M->addTratamiento($_POST["id"],$_POST["frmPat"],$_POST["tratam"],$_POST["tratamDescr"]);
+        if ($res == "ok"){
+            $this->addTratamiento("Se agregó el tratamiento correctamente",null);
+        }
+        else{
+            $this->addTratamiento(null,"No se pudo insertar el tratamiento");
+        }
+    }
+    public function addPersonContacto($msg = null, $err = null) {
+        $pac_Id = $_POST["id"];
+        $M = new ModeloPacientes("");
+        $res = $M->getPacienteDet($pac_Id);
+        $template = file_get_contents('web/principal.html');
+        $scripts = '<script src="web/js/pacientes.js"></script>';
+        $V = new PacientesAddPersonaCont($template, $scripts);
+        if ($res[0] == "err"){
+            $V->setError("No se pudieron recuperar los detalles del Paciente");
+        }
+        else {
+            $V->setData($res);
+        }
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
+        if ($err) $V->setError($err);
+        if ($msg) $V->setMensaje($msg);
+        $V->mostrarHTML();
+    }
+    
+    public function addPersonContactoDo() {
+        $M = new ModeloPacientes("");
+        $res = $M->addPersonaContacto($_POST["frmNombre"],$_POST["frmDNI"],$_POST["frmMail"],$_POST["frmDireccion"],$_POST["frmBarrio"],$_POST["frmProvincia"],$_POST["frmLocalidad"],$_POST["id"],$_POST["frmTel"],$_POST["frmRelacion"],$_POST["frmPiso"],$_POST["frmDepto"]);
+        if ($res == "ok"){
+            $this->addPersonContacto("Se agregó la persona de contacto correctamente",null);
+        }
+        else{
+            $this->addPersonContacto(null,"No se pudo insertar la persona de contacto");
+        }
+    }
 }
 
 ?>

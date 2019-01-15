@@ -27,7 +27,7 @@ final class PacientesDet extends Vista {
         }
     foreach ($resultados3 as $clave ) {
             if ($clave[8] != ""){
-                $pers = $pers . $clave[10] . " DNI ". $clave[11] . ' Tel:'.$clave[12].  ' - '.$clave[13]. '<br> mail: '. $clave[14] .' Dirección: ' .$clave[15] .' '. $clave[16] ;
+                $pers = $pers ."<b>". $clave[10] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> DNI:". $clave[11] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tel:<b>'.$clave[12].  '</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>'.$clave[13].  '</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '. ' mail: '. $clave[14] .' Dirección: ' .$clave[15] .' '. $clave[16] .'<br>' ;
             }
         }
 

@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Facultad/TFI/desarrollo/web/app/vistas/PacientesAddPersonaCont.php</file>
             <file>file:/D:/Facultad/TFI/desarrollo/web/web/js/pacientes.js</file>
             <file>file:/D:/Facultad/TFI/desarrollo/web/app/modelos/ModeloPacientes.php</file>
-            <file>file:/D:/Facultad/TFI/desarrollo/web/app/vistas/Pacientes.php</file>
-            <file>file:/D:/Facultad/TFI/desarrollo/web/web/css/style.css</file>
-            <file>file:/D:/Facultad/TFI/desarrollo/web/app/vistas/PacientesAdd.php</file>
-            <file>file:/D:/Facultad/TFI/desarrollo/web/app/vistas/PacientesAddPatologia.php</file>
+            <file>file:/D:/Facultad/TFI/desarrollo/web/app/vistas/PacientesAddTratamiento.php</file>
             <file>file:/D:/Facultad/TFI/desarrollo/web/app/controladores/ControladorPacientes.php</file>
             <file>file:/D:/Facultad/TFI/desarrollo/web/app/vistas/PacientesDet.php</file>
+            <file>file:/D:/Facultad/TFI/desarrollo/web/srv/srvEmerFace.php</file>
         </group>
     </open-files>
 </project-private>

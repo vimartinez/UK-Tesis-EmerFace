@@ -71,7 +71,7 @@ public function mostrarHTML() {
                     <input type="submit" value="Guardar" id="frmGuardarUsuario2">
                     <input type="button" value="Volver" id="frmVolverUsuario">
                 </li>
-                <input type="hidden" id="metodo" name="metodo" value="addPacienteDo" >
+                <input type="hidden" id="metodo" name="metodo" value="addTratamientoDo" >
                 <input type="hidden" id="controlador" name="controlador" value="ControladorPacientes" >
             </ul>
            </form>
