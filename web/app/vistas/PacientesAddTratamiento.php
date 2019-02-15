@@ -12,7 +12,8 @@ public function mostrarHTML() {
     $resultados =  $this->getData();
     $resultados2 =  $this->getData2();
     foreach ($resultados as $clave ) {
-            $patolog = $patolog . "<option value=".$clave[10].">".$clave[11]."</option>";
+        //var_dump($clave);
+            $patolog = $patolog . "<option value=".$clave[14].">".$clave[15]."</option>";
         }
     $diccionario = array(
         'areaTrabajo' => '

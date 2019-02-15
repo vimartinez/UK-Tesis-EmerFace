@@ -50,7 +50,17 @@ public function mostrarHTML() {
                  <li>
                    <input type="number" id="frmDNI" name="frmDNI" class="field-divided" placeholder="DNI" min="1000000" max="99000000" required/>&nbsp;
                    <input type="email" id="frmMail" name="frmMail" class="field-divided" placeholder="Mail" required/>
-                </li>        
+                </li>      
+                <li>
+                   <input type="text" id="frmGrpSang" name="frmGrpSang" class="field-triple" placeholder="Grupo Sanguíneo" required/>&nbsp;
+                   <input type="text" id="frmFechaNac" name="frmFechaNac" class="field-triple" placeholder="Fecha de Nacimiento" required/>&nbsp;
+                   <select name="frmSexo" id="frmSexo" class="field-triple">
+                    <option value="0">Sexo</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="N">No Desea expresarlo</option>
+                    </select>&nbsp;
+                </li>
                 <li>
                    <label>Dirección <span class="required">*</span></label>
                    <input type="text" id="frmDireccion" name="frmDireccion" class="field-divided" placeholder="Calle y número" required/>&nbsp;
@@ -71,7 +81,7 @@ public function mostrarHTML() {
                     <input type="submit" value="Guardar" id="frmGuardarUsuario2">
                     <input type="button" value="Volver" id="frmVolverUsuario">
                 </li>
-                <input type="hidden" id="metodo" name="metodo" value="addTratamientoDo" >
+                <input type="hidden" id="metodo" name="metodo" value="addPacienteDo" >
                 <input type="hidden" id="controlador" name="controlador" value="ControladorPacientes" >
             </ul>
            </form>

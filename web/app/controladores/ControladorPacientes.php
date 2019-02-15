@@ -92,7 +92,7 @@ final class ControladorPacientes extends Controlador {
     
     public function addPacienteDo() {
         $M = new ModeloPacientes("");
-        $res = $M->addPaciente($_POST["frmNombre"],$_POST["frmDNI"],$_POST["frmMail"],$_POST["frmDireccion"],$_POST["frmBarrio"],$_POST["frmPiso"],$_POST["frmDepto"],$_POST["frmProvincia"],$_POST["frmLocalidad"]);
+        $res = $M->addPaciente($_POST["frmNombre"],$_POST["frmDNI"],$_POST["frmMail"],$_POST["frmDireccion"],$_POST["frmBarrio"],$_POST["frmPiso"],$_POST["frmDepto"],$_POST["frmProvincia"],$_POST["frmLocalidad"],$_POST["frmGrpSang"],$_POST["frmFechaNac"],$_POST["frmSexo"]);
         if ($res == "ok"){
             $this->addPaciente("Se agregó el paciente correctamente",null);
         }
@@ -171,6 +171,7 @@ final class ControladorPacientes extends Controlador {
             $this->addTratamiento(null,"No se pudo insertar el tratamiento");
         }
     }
+    
     public function addPersonContacto($msg = null, $err = null) {
         $pac_Id = $_POST["id"];
         $M = new ModeloPacientes("");
@@ -201,6 +202,91 @@ final class ControladorPacientes extends Controlador {
         else{
             $this->addPersonContacto(null,"No se pudo insertar la persona de contacto");
         }
+    }
+    
+    public function addImagenes($msg = null, $err = null) {
+        $pac_Id = $_POST["id"];
+        $M = new ModeloPacientes("");
+        $res = $M->getPacienteDet($pac_Id);
+        $template = file_get_contents('web/principal.html');
+        $scripts = '<script src="web/js/pacientes.js"></script>';
+        $V = new PacientesAddImagen($template, $scripts);
+        if ($res[0] == "err"){
+            $V->setError("No se pudieron recuperar los detalles del Paciente");
+        }
+        else {
+            $V->setData($res);
+        }
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
+        if ($err) $V->setError($err);
+        if ($msg) $V->setMensaje($msg);
+        $V->mostrarHTML();
+    }
+    
+    public function addImagenesDo() {
+        $imagenes = array();
+        $imagenes[0] = $_POST["pathimg1"];
+        $imagenes[1] = $_POST["pathimg2"];
+        $imagenes[2] = $_POST["pathimg3"];
+        $imagenes[3] = $_POST["pathimg4"];
+        $imagenes[4] = $_POST["pathimg5"];
+        $imagenes[5] = $_POST["pathimg6"];
+        $imagenes[6] = $_POST["pathimg7"];
+        $imagenes[7] = $_POST["pathimg8"];
+        $M = new ModeloPacientes("");
+        $res = $M->addImagenes($_POST["id"],$imagenes);
+        if ($res == "ok"){
+            $this->addImagenes("Se registraron las imágenes correctamente",null);
+        }
+        else{
+            $this->addImagenes(null,"No se pudieron registrar las imágenes del paciente");
+        }
+    }
+     public function addImagenes2($msg = null, $err = null) {
+        $pac_Id = $_POST["id"];
+        $M = new ModeloPacientes("");
+        $res = $M->getPacienteDet($pac_Id);
+        $template = file_get_contents('web/principal.html');
+        $scripts = '<script src="web/js/pacientes.js"></script>';
+        $V = new PacientesAddImagen2($template, $scripts);
+        if ($res[0] == "err"){
+            $V->setError("No se pudieron recuperar los detalles del Paciente");
+        }
+        else {
+            $V->setData($res);
+        }
+        $res2 = $M->getImagenesPaciente($pac_Id);
+        if ($res2[0] == "err"){
+            $V->setMensaje("El paciente no tiene imágenes registradas.");
+        }
+        else {
+            $V->setData2($res2);
+        }
+        if (isset($_SESSION['datosUsu'])){
+            $V->setinfoUsu($_SESSION['datosUsu']);
+        }
+        if ($err) $V->setError($err);
+        if ($msg) $V->setMensaje($msg);
+        $V->mostrarHTML();
+    }
+    
+    public function addImagenesDo2() {
+        //var_dump($_FILES); echo "<BR><BR>";
+        //var_dump($_POST); die();
+        $imgNombre = $_FILES['imgInp']['name'];
+        $imgTmpNombre = $_FILES['imgInp']['tmp_name'];
+        $idPaciente = $_POST["id"];
+        $M = new ModeloPacientes("");
+        $res = $M->addImagenes2($idPaciente,$imgNombre,$imgTmpNombre);
+        if ($res == "ok"){
+            $this->addImagenes2("Se registró las imágen correctamente",null);
+        }
+        else{
+            $this->addImagenes(null,"No se pudo registrar las imagen del paciente");
+        }
+        
     }
 }
 

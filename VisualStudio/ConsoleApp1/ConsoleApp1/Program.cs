@@ -50,6 +50,10 @@ namespace ConsoleApp1
                 using (Stream s = File.OpenRead(imgPath))
                 {
                     await faceServiceClient.AddPersonFaceAsync(personGroupID, person.PersonId, s);
+                    Console.WriteLine("imagen agregada: " + imgPath);
+                    Console.Out.Flush();
+                    await Task.Delay(5000);
+                   // System.Threading.Thread.Sleep(5000);
                 }
             }
         }
@@ -113,9 +117,30 @@ namespace ConsoleApp1
 
             //   new Program().TrainingAI("fut");
 
-            new Program().RecognitionFace("fut");
+            //new Program().RecognitionFace("fut");
 
+            // new Program().CreatePersonGroup("pac", "Pacientes");
+
+            //     new Program().addPersonToGroup("pac", "1", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Anibal\");
+            //     new Program().addPersonToGroup("pac", "2", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Ale\");
+           //      new Program().addPersonToGroup("pac", "3", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Emi\");
+           //      new Program().addPersonToGroup("pac", "4", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Vic\");
+           //      new Program().addPersonToGroup("pac", "5", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Juan\");
+           //      new Program().addPersonToGroup("pac", "6", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\JuanF\");
+            //     new Program().addPersonToGroup("pac", "7", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Gustavo\");
+           //      new Program().addPersonToGroup("pac", "8", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Nico\");
+           //      new Program().addPersonToGroup("pac", "9", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Bati\");
+           //      new Program().addPersonToGroup("pac", "10", @"D:\Facultad\TFI\desarrollo\VisualStudio\Img\Pacientes\Messi\");
+
+            new Program().TrainingAI("pac");
+               
+           // new Program().RecognitionFace("pac");
             Console.ReadLine();
+            //api de cognitive services - Face
+            //https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244/console
+            //https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248
+            //https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241/console
+
         }
     }
 }

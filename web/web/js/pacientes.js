@@ -112,4 +112,58 @@ $().ready(function () {
        $("#frmMenu #ID").val($("#pacId").val());
        $("#frmMenu").submit();
     });
+    $("#frmNuevaImagen").click(function () {
+        $("#frmMenu #controlador").val("controladorPacientes");
+        $("#frmMenu #metodo").val("addImagenes2");
+        $("#frmMenu #ID").val($("#pacId").val());
+        $("#frmMenu").submit();
+    });
+    $("#img1, #img2, #img3, #img4, #img5, #img6, #img7, #img8").click(function () {
+        $("#idImagen").val(this.id);
+        $("#imgInp").click();
+    });
+    $("#imgInp").change(function () {
+        var preview = document.getElementById($("#idImagen").val());
+       // var hiddenFrm = document.getElementById("path"+$("#idImagen").val());
+        var file    = $('#imgInp')[0].files[0];
+        var reader  = new FileReader();
+
+        reader.onloadend = function () {
+          preview.src = reader.result;
+       //   hiddenFrm.value = reader.result;
+        }
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          preview.src = "";
+        }
+    }); 
+    
+    $("#frmGuardarImgs").click(function () {
+      //  $("#frmMenu #controlador").val("controladorPacientes");
+      //  $("#frmMenu #metodo").val("addImagenesDo");
+        $("#frmMenu #ID").val($("#pacId").val());
+        $("#frmMenu").submit();
+    });
+    
+     $("#frmNuevaImagen2").click(function () {
+        $("#frmMenu #controlador").val("controladorPacientes");
+        $("#frmMenu #metodo").val("addImagenes2");
+        $("#frmMenu #ID").val($("#pacId").val());
+        $("#frmMenu").submit();
+    });
+    
+     $("#frmFechaNac").datepicker({
+      dateFormat: "yy-mm-dd",
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-100:+0",
+      onClose: function (selectedDate) {
+          $("#from").datepicker("option","maxdate",selectedDate);
+      }
+    });
+    
+    
+    
 });

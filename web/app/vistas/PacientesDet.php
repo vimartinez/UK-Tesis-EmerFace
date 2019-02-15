@@ -15,29 +15,36 @@ final class PacientesDet extends Vista {
     $pat = "";
     $trat = "";
     $pers = "";
-    foreach ($resultados as $clave ) {
-            if ($clave[8] != ""){
-                $pat = $pat . $clave[11] . '<br>';
-            }
-        }
+       
     foreach ($resultados2 as $clave ) {
-            if ($clave[8] != ""){
-                $trat = $trat . $clave[10] . ": ". $clave[11] . '<br>';
+            if ($clave[12] != ""){
+                $trat = $trat . "<b>" .$clave[15] . "</b>". ": ". $clave[14] . '<br>';
             }
         }
+    if ($trat == "") $trat = "No se registran tratamientos para este paciente";
     foreach ($resultados3 as $clave ) {
-            if ($clave[8] != ""){
-                $pers = $pers ."<b>". $clave[10] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> DNI:". $clave[11] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tel:<b>'.$clave[12].  '</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>'.$clave[13].  '</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '. ' mail: '. $clave[14] .' Dirección: ' .$clave[15] .' '. $clave[16] .'<br>' ;
+        //var_dump($clave);
+            if ($clave[12] != ""){
+                $pers = $pers ."<b>". $clave[14] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> DNI:". $clave[15] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tel:<b>'.$clave[16].  '</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>'.$clave[17].  '</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '. ' mail: '. $clave[18] .' Dirección: ' .$clave[19] .' '. $clave[20].' '. $clave[21] .' - '. $clave[22].' - '. $clave[26].'<br>' ;
             }
         }
+    if ($pers == "") $pers = "No se registran personas de contacto para este paciente";
 
+    foreach ($resultados as $clave ) {
+            //var_dump($clave);
+            if ($clave[12] != ""){
+                $pat = $pat . $clave[15] .  '<br>';
+            }
+        }
+    if ($pat == "") $pat = "No se registran patologías para este paciente";
+    
     $diccionario = array(
         'areaTrabajo' => '
             <div class="box">
         <h2>Detalle de Paciente:</h2>             
         <p>
-           Nombre:<b>'.$clave[1].'</b> DNI: '.$clave[7].'<br />
-           Dirección: '.$clave[2].' '.$clave[3].' '.$clave[4].'
+           Nombre: <b>'.$clave[1].'</b> DNI: '.$clave[7].' Fecha de nacimiento '.$clave[9].'<br />
+           Dirección: '.$clave[2].' '.$clave[3].' '.$clave[4].' - '.$clave[5].' - '.$clave[19].'
         </p>
         <div class="box2">
             <h2>Patologías:</h2>
@@ -52,11 +59,12 @@ final class PacientesDet extends Vista {
             <p>'.$pers.'</p>
         </div>
 
-            <ul class="form-style-1">
+            <ul class="form-style-1" >
                 <li>
-                 <input type="button" value="Agregar Patología" id="frmNuevaPat">
-                 <input type="button" value="Agregar Tratamiento" id="frmNuevoTrat">
-                 <input type="button" value="Agregar Persona de contacto" id="frmNuevaPersCont">
+                 <input type="button" value="Nueva Patología" id="frmNuevaPat">
+                 <input type="button" value="Nuevo Tratamiento" id="frmNuevoTrat">
+                 <input type="button" value="Nuevo Contacto" id="frmNuevaPersCont">
+                 <input type="button" value="Ingresar Fotos" id="frmNuevaImagen">
                  <input type="button" value="Volver" id="frmVolverLibro">
                  <input type="hidden"  value="'.$this->getPacId().'" id="pacId" name="pacId">
                 </li>

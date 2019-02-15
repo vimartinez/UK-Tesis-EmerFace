@@ -10,7 +10,8 @@ public function mostrarHTML() {
     $error = ($this->getError() != "" ? $this->mostrarError($this->getError()) : "");
     $tabla = "";
     foreach ($resultados as $clave ) {
-             $tabla = $tabla .' <tr id="'.$clave[0].'"><td>'.$clave[0].'</td><td>'.$clave[1].'</td><td>'.$clave[2].'</td>';
+            $patCrit = $clave[3]==1? "<b>Si</b>" : "No";
+            $tabla = $tabla .' <tr id="'.$clave[0].'"><td>'.$clave[0].'</td><td>'.$clave[1].'</td><td>'.$clave[2].'</td><td>&nbsp;&nbsp;&nbsp;'.$patCrit.'</td>';
         }
 
     $diccionario = array(
@@ -27,10 +28,11 @@ public function mostrarHTML() {
                 <th>Patología</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>Crítica</th>
               </tr>
               {tablaAutores}
-            </table>
-            <br /> <br/>
+            </table><br />
+            <div align="Center"> ... 1 2 3 4 5 ... <br/>
             <ul class="form-style-1">
                 <li>
                     <input type="button" value="Volver" id="frmVolverStaff">

@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +48,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -57,7 +60,7 @@ import static com.tfi.emerface.emerface2.R.drawable.paciente2;
 public class MainActivity extends AppCompatActivity {
 
     private FaceServiceClient faceServiceClient = new FaceServiceRestClient("https://westcentralus.api.cognitive.microsoft.com/face/v1.0","f72f0fc759c14ad182c7581832e235a3");
-    private final String personGroupId = "fut";
+    private final String personGroupId = "pac";
     public static final String PACIENTE = "com.tfi.emerface.emerface2.pacienteId";
 
  //   String mCurrentPhotoPath;
@@ -139,8 +142,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else {
-            Toast toast;
-            toast = Toast.makeText(MainActivity.this, "Debe identificar un paciente primero", Toast.LENGTH_SHORT);
+
+            Toast toast = Toast.makeText(MainActivity.this, "Debe identificar un paciente primero.", Toast.LENGTH_SHORT);
+            View toastView = toast.getView();
+
+            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+            toastMessage.setTextSize(14);
+            toastMessage.setTextColor(Color.BLACK);
+            toastMessage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.info2, 0, 0, 0);
+            toastMessage.setGravity(Gravity.CENTER);
+            toastMessage.setCompoundDrawablePadding(20);
+            toastView.setBackgroundColor(Color.parseColor("#FAFAFA"));
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             toast.show();
         }
@@ -149,64 +161,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void probarSrv(View view) {
-        String url = "http://192.168.0.131/srv/srvEmerFace.php";
-     //   String url = "https://api.myjson.com/bins/rwll6";
-        RequestQueue queque = Volley.newRequestQueue(this);
+        Toast toast = Toast.makeText(MainActivity.this, "Proximamente..", Toast.LENGTH_SHORT);
+        View toastView = toast.getView();
 
-        StringRequest request = new StringRequest (url,new Response.Listener<String>(){
-            @Override
-            public void onResponse(String response){
-                TextView a = (TextView) findViewById(R.id.textView);
-                try {
-                    a.setText(response.toString());
-                } catch (Exception e) {
-                    a.setText("ERROR");
-                    e.printStackTrace();
-                }
-            }
-
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-
-            }
-        }
-
-        );
-
-
-
-
-
-
-
-
-
-       /*
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>(){
-            @Override
-            public void onResponse(JSONArray response){
-                TextView a = (TextView) findViewById(R.id.textView);
-                try {
-                    a.setText(response.getJSONObject(1).toString());
-                    a.setText("eeeeeeee!!");
-                } catch (JSONException e) {
-                    a.setText("ERROR");
-                    e.printStackTrace();
-                }
-            }
-
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-
-            }
-        }
-
-        );*/
-
-        queque.add(request);
-
+        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+        toastMessage.setTextSize(14);
+        toastMessage.setTextColor(Color.BLACK);
+        toastMessage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.info2, 0, 0, 0);
+        toastMessage.setGravity(Gravity.CENTER);
+        toastMessage.setCompoundDrawablePadding(20);
+        toastView.setBackgroundColor(Color.parseColor("#FAFAFA"));
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.show();
 
     }
 
@@ -263,7 +229,6 @@ public class MainActivity extends AppCompatActivity {
             mDialog.dismiss();
 
 
-            Toast toast;
             if (facesDetected != null){
                 final UUID[] facesIds = new UUID[facesDetected.length];
                 if (facesDetected.length > 0){
@@ -274,7 +239,16 @@ public class MainActivity extends AppCompatActivity {
                     new IdentificationTask(personGroupId).execute(facesIds);
                 }
                 else {
-                    toast = Toast.makeText(MainActivity.this, "No se pudo identificar ninguna persona", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(MainActivity.this, "No se pudo identificar ninguna persona", Toast.LENGTH_SHORT);
+                    View toastView = toast.getView();
+
+                    TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+                    toastMessage.setTextSize(14);
+                    toastMessage.setTextColor(Color.BLACK);
+                    toastMessage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.alert2, 0, 0, 0);
+                    toastMessage.setGravity(Gravity.CENTER);
+                    toastMessage.setCompoundDrawablePadding(20);
+                    toastView.setBackgroundColor(Color.parseColor("#FAFAFA"));
                     toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
                     toast.show();
                 }
@@ -384,12 +358,18 @@ public class MainActivity extends AppCompatActivity {
             //ImageView img =(ImageView)findViewById(R.id.imageView);
             imgTakenPic.setImageBitmap(drawFaceRectangleOnBitmap(bitmap,facesDetected,person.name));
 
-            Toast toast;
-            String msg = "Se identificó el paciente " + person.name;
-            toast = Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MainActivity.this, "Se identificó el paciente correctamente", Toast.LENGTH_LONG);
+            View toastView = toast.getView();
+
+            TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+            toastMessage.setTextSize(14);
+            toastMessage.setTextColor(Color.BLACK);
+            toastMessage.setCompoundDrawablesWithIntrinsicBounds(R.drawable.info2, 0, 0, 0);
+            toastMessage.setGravity(Gravity.CENTER);
+            toastMessage.setCompoundDrawablePadding(20);
+            toastView.setBackgroundColor(Color.parseColor("#FAFAFA"));
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             toast.show();
-
         }
 
         @Override
