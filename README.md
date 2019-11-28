@@ -21,7 +21,7 @@ La solución consta de tres módulos:
   
   App mobile: nativa Android con AndroidStudio
   
-  Módulo web: PHP
+  Módulo web: PHP con NetBeans
   
   
 
