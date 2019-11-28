@@ -12,10 +12,17 @@ La solución consta de tres módulos:
   
   App mobile (solo Android): para identificación de pacientes y obtención de datos correspondientes
   
+  
   Herramientas utilizadas:
+  
   BD: MySql
+  
   App de Consola: C# con VisualStudio
+  
   App mobile: nativa Android con AndroidStudio
+  
   Módulo web: PHP
+  
+  
 
 Victor Martinez - Febrero 2019
